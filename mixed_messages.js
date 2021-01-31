@@ -16,15 +16,15 @@ const lyrics = {
 
 }
 // Takes in array of openers and outputs random opening quote from array
-function getRandomOpener(arr) {
+function getRandomOpener() {
     
-    return arr[getRandomNum(arr.length - 1)];
+    return openers[getRandomNum(openers.length)];
 
 }
 
 // Gets random num from 0 -> len - 1
 function getRandomNum(len) {
-    return Math.round(Math.random() * len) 
+    return Math.floor(Math.random() * len) 
     
 }
 
@@ -34,11 +34,15 @@ function getMessage() {
 
     let opener = getRandomOpener(openers)
 
-    let randIndex = getRandomNum(lyrics[opener].length - 1);
+    let randIndex = getRandomNum(lyrics[opener].length);
+    
+
 
     for (const property in lyrics) {
         
         if (opener === property) {
+            //console.log(`opener: ${lyrics[opener]}\nproperty: ${property}\nindex: ${randIndex}`)
+
 
             message =  opener + musicNote + lyrics[opener][randIndex] + musicNote;
 
@@ -46,6 +50,8 @@ function getMessage() {
         
     }
     return console.log(message);
+
+   
 
 /*Alternate method
     switch(opener) {
@@ -68,3 +74,5 @@ function getMessage() {
 }
 
 getMessage()
+
+
